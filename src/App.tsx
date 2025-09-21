@@ -42,14 +42,14 @@ export default function App() {
         <section id="home" className="flex items-center justify-center px-4 sm:px-6 md:px-8 py-12 md:py-30">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
             <div className={`${themeStyles.navBg} text-black rounded-2xl flex flex-col items-center justify-center p-6 sm:p-8 md:p-10 shadow-lg ${themeStyles.navText}`}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center md:text-left">Hi, I'm Ishaan Lotlikar👋</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center md:text-left">Hi, I'm Ishaan Lotlikar 👨‍💻</h1>
               <p className="text-md sm:text-lg md:text-lg max-w-md text-center md:text-left">I’m a passionate <span className="font-semibold">Software Engineer</span>{" "} having 1.8 yrs of experience in software development.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                <a href="#projects" className={`${themeStyles.bodyBg} ${themeStyles.text} px-4 sm:px-6 py-2 rounded-lg shadow hover:bg-gray-200 transition text-center`}>
+                <a href="#projects" className={`${themeStyles.bodyBg} ${themeStyles.text} px-4 sm:px-6 py-2 rounded-lg shadow hover:text-white hover:bg-gray-800 transition text-center`}>
                   View Projects
                 </a>
-                <a href="/Ishaan_Resume.pdf" target="_blank" rel="noopener noreferrer" className={`${themeStyles.bodyBg} ${themeStyles.text} px-4 sm:px-6 py-2 rounded-lg shadow hover:bg-gray-200 transition text-center`}>View My Resume
+                <a href="/Ishaan_Resume.pdf" target="_blank" rel="noopener noreferrer" className={`${themeStyles.bodyBg} ${themeStyles.navText} px-4 sm:px-6 py-2 rounded-lg shadow hover:text-white hover:bg-gray-800 transition text-center`}>View My Resume
                 </a>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function App() {
               <span className="font-semibold">Next.js</span>
             </div>
             <div className={`p-4 ${themeStyles.bodyBg} rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl flex flex-col items-center`}>
-              <img src="/logos/icons8-express-js-48.png" alt="Tailwind CSS" className="w-12 h-12 mb-2" />
+              <img src={ themeStyles.bodyBg === "bg-zinc-900" || themeStyles.bodyBg === "bg-zinc-700"  ? "/logos/icons8-express-js-64.png" : "/logos/icons8-express-js-48.png"} alt="Tailwind CSS" className="w-12 h-12 mb-2" />
               <span className="font-semibold">Express</span>
             </div>
             <div className={`p-4 ${themeStyles.bodyBg} rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl flex flex-col items-center`}>
@@ -162,13 +162,13 @@ export default function App() {
               </ul>
               <h4 className="font-semibold mb-2">Tech Stack</h4>
               <p className="mb-4 text-sm">PHP, CodeIgniter 4, PostgreSQL, Git</p>
-              <a className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
+              <a className={`${themeStyles.bodyBg} ${themeStyles.navText} px-4 py-2 rounded-lg hover:text-white hover:bg-gray-800 transition text-sm`}>
                 More Details
               </a>
             </div>
             <div className={`p-6 border rounded-lg shadow hover:shadow-lg transition ${themeStyles.navBg}`}>
               <h3 className="text-xl font-bold mb-4">Logemanns</h3>
-              <p className={`mb-4 text-700 ${themeStyles.text}`}>Redesigned and upgraded an interactive learning platform used for swallowing disorder assessment and training. Migrated the backend from CodeIgniter 2 to CodeIgniter 4, introducing a modern API-driven structure for improved data handling.
+              <p className={`mb-4 text-700 ${themeStyles.navText}`}>Redesigned and upgraded an interactive learning platform used for swallowing disorder assessment and training. Migrated the backend from CodeIgniter 2 to CodeIgniter 4, introducing a modern API-driven structure for improved data handling.
               </p>
               <h4 className="font-semibold mb-2">My Role</h4>
               <ul className={`list-disc ml-6 mb-4 text-600 text-sm ${themeStyles.text}`}>
@@ -178,7 +178,7 @@ export default function App() {
               </ul>
               <h4 className="font-semibold mb-2">Tech Stack</h4>
               <p className="mb-4 text-sm">PHP, CodeIgniter 4, PostgreSQL, Git </p>
-              <a className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm">More Details</a>
+              <a className={`${themeStyles.bodyBg} ${themeStyles.text} px-4 py-2 rounded-lg hover:text-white hover:bg-gray-800 transition text-sm`}>More Details</a>
             </div>
             <div className={`p-6 border rounded-lg shadow hover:shadow-lg transition ${themeStyles.navBg}`}>
               <h3 className="text-xl font-bold mb-4">Vehicle Rental Management System (Personal Project)</h3>
@@ -186,13 +186,11 @@ export default function App() {
               </p>
               <h4 className="font-semibold mb-2">Tech Stack</h4>
               <p className="mb-4 text-sm">React, Tailwind CSS, CodeIgniter 4, MySQL</p>
-              <a className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
-                More Details
-              </a>
+              <a className={`${themeStyles.bodyBg} ${themeStyles.navText} px-4 py-2 rounded-lg hover:text-white hover:bg-gray-800 transition text-sm`}>More Details</a>
             </div>
           </div>
           <div className="mt-12 text-center">
-            <a href="/projects" className={`bg-800 ${themeStyles.navBg} ${themeStyles.text} px-6 py-3 rounded-lg hover:bg-gray-900 transition`}>View More →
+            <a href="#projects" className={`bg-800 ${themeStyles.navBg} ${themeStyles.navText} px-6 py-3 rounded-lg hover:text-white hover:bg-gray-800 transition`}>View More →
             </a>
           </div>
         </section>
