@@ -1,13 +1,16 @@
 import ThemeSlider from "./Components/ThemeSlider";
 import { useTheme } from "./Components/ThemeContext";
+import { projects } from "./Components/Constants";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
-   const { themeStyles } = useTheme();
+  const { themeStyles } = useTheme();
+  const [showMore, setShowMore] = useState(false);
   return (
     <div>
       <nav className={`${themeStyles.navBg} ${themeStyles.navText} w-full fixed top-0 left-0 shadow-md z-50`}>
@@ -43,7 +46,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
             <div className={`${themeStyles.navBg} text-black rounded-2xl flex flex-col items-center justify-center p-6 sm:p-8 md:p-10 shadow-lg ${themeStyles.navText}`}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center md:text-left">Hi, I'm Ishaan Lotlikar 👨‍💻</h1>
-              <p className="text-md sm:text-lg md:text-lg max-w-md text-center md:text-left">I’m a passionate <span className="font-semibold">Software Engineer</span>{" "} having 1.8 yrs of experience in software development.
+              <p className="text-md sm:text-lg md:text-lg max-w-md text-center md:text-left">I’m a passionate <span className="font-semibold">Software Engineer</span>{" "} having more than 2 yrs of experience in software development.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-6">
                 <a href="#projects" className={`${themeStyles.bodyBg} ${themeStyles.text} px-4 sm:px-6 py-2 rounded-lg shadow hover:text-white hover:bg-gray-800 transition text-center`}>
@@ -81,10 +84,63 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section id="about" className="py-50 flex flex-col items-center text-center px-6">
-          <h2 className="text-3xl font-bold mb-6">About Me</h2>
-          <p className="max-w-2xl text-lg">I’m a Software Engineer with 1.8+ years of experience, specializing in Backend Development using CodeIgniter 4 and Laravel. I design and build scalable APIs while working closely with databases to ensure smooth and efficient data handling. Although UI isn’t my primary focus, I enjoy crafting clean and user-friendly solutions. Currently, I’m expanding my skillset by learning the MERN stack, exploring full-stack development, and staying up-to-date with modern technologies.🌟
-          </p>
+        <section id="about" className="py-20 flex flex-col items-center px-6 mb-20">
+          <div className="max-w-3xl w-full">
+            {/* Header */}
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-2">
+              About me
+            </p>
+            <h2 className="text-3xl font-medium mb-5">
+              Building things that work, end to end.
+            </h2>
+
+            <p className="text-sm md:text-base leading-relaxed mb-10">
+              I'm a Software Engineer with 2+ years of experience in full-stack development.
+              I design and build scalable applications from database schema to user interface —
+              focusing on clean code, solid APIs, and interfaces people actually enjoy using.
+            </p>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 w-full mb-10">
+              {[
+                { num: "2+", label: "Years of experience" },
+                { num: "5+", label: "Technologies" },
+                { num: "Full", label: "Stack coverage" },
+              ].map(({ num, label }) => (
+                <div
+                  key={label}
+                  className="rounded-lg p-4 text-center border"
+                >
+                  <p className="text-2xl font-semibold">{num}</p>
+                  <p className="text-xs mt-1">{label}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Currently learning */}
+            <div className="w-full border-l-4 rounded-lg p-4 flex gap-4 items-start text-left border">
+              <div className="w-9 h-9 min-w-[36px] rounded-md flex items-center justify-center">
+                <div className="w-9 h-9 min-w-[36px] rounded-md bg-amber-100 flex items-center justify-center">
+                  {themeStyles.bodyBg === "bg-zinc-50" || themeStyles.bodyBg === "bg-zinc-300" ? (
+                    <SunIcon className="w-4 h-4 text-amber-600" />
+                  ) : (
+                    <MoonIcon className="w-4 h-4 text-amber-600" />
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-sm font-medium mb-1">
+                  Currently learning — AI & Machine Learning
+                </p>
+                <p className="text-sm leading-relaxed">
+                  Exploring ML fundamentals, model training, and how to integrate AI
+                  capabilities into real-world applications.
+                </p>
+              </div>
+            </div>
+
+          </div>
         </section>
         <section id="skills" className={`py-20 ${themeStyles.navBg} flex flex-col items-center px-6`}>
           <h2 className="text-3xl font-bold mb-6">Skills</h2>
@@ -130,6 +186,14 @@ export default function App() {
               <span className="font-semibold">Laravel</span>
             </div>
             <div className={`p-4 ${themeStyles.bodyBg} rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl flex flex-col items-center`}>
+              <img src={ themeStyles.bodyBg === "bg-zinc-50" || themeStyles.bodyBg === "bg-zinc-300"  ? "/logos/icons8-python-50.png" : "/logos/icons8-python-48.png"} alt="Tailwind CSS" className="w-12 h-12 mb-2" />
+              <span className="font-semibold">Python</span>
+            </div>
+            <div className={`p-4 ${themeStyles.bodyBg} rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl flex flex-col items-center`}>
+              <img src="/logos/FastAPI.png" alt="Tailwind CSS" className="w-12 h-12 mb-2" />
+              <span className="font-semibold">FastAPI</span>
+            </div>
+            <div className={`p-4 ${themeStyles.bodyBg} rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl flex flex-col items-center`}>
               <img src="/logos/icons8-mysql-logo-50.png" alt="Tailwind CSS" className="w-12 h-12 mb-2" />
               <span className="font-semibold">MySQL</span>
             </div>
@@ -147,51 +211,80 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section id="projects" className="py-20 px-6 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">🚀 Projects I Have Worked On</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className={`p-6 border rounded-lg shadow hover:shadow-lg transition ${themeStyles.navBg}`}>
-              <h3 className="text-xl font-bold mb-4">RoyCares</h3>
-              <p className={`mb-4 text-700 ${themeStyles.text}`}>Lifestyle adjustment and recovery system that helps users progress through structured sections, complete self-assessments, and engage in therapy sessions. The platform provides personalized insights, guided video content for reflection, and supports psychiatrist-led recovery sessions.
-              </p>
-              <h4 className="font-semibold mb-2">My Role</h4>
-              <ul className={`list-disc ml-6 mb-4 text-600 text-sm ${themeStyles.text}`}>
-                <li>Designed and developed RESTful APIs using CodeIgniter 4 to support seamless backend functionality.</li>
-                <li>Integrated PostgreSQL, optimizing database queries for efficient data storage and retrieval.</li>
-                <li>Developed structured modules for user progress tracking, self-assessments, and therapy sessions.</li>
-              </ul>
-              <h4 className="font-semibold mb-2">Tech Stack</h4>
-              <p className="mb-4 text-sm">PHP, CodeIgniter 4, PostgreSQL, Git</p>
-              <a className={`${themeStyles.bodyBg} ${themeStyles.navText} px-4 py-2 rounded-lg hover:text-white hover:bg-gray-800 transition text-sm`}>
-                More Details
-              </a>
+        <section id="projects" className="py-20 px-6">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-1">Work</p>
+            <h2 className="text-3xl font-medium mb-1">Projects I have worked on</h2>
+            <p className="text-sm text-muted-foreground mb-10">A mix of professional builds and side projects.</p>
+
+            <div className="grid md:grid-cols-3 gap-4">
+              {projects.map((p) => (
+                <div
+                  key={p.name}
+                  className={`border rounded-xl p-5 flex flex-col ${themeStyles.navBg}`}
+                >
+                  {/* Card header */}
+                  <div className="flex items-start justify-between mb-3">
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center`}>
+                      {/* swap in your icon per project */}
+                      <span className="text-sm">✦</span>
+                    </div>
+                    <span className={`text-xs font-medium px-2 py-1 rounded-full ${p.badgeClass}`}>
+                      {p.badge}
+                    </span>
+                  </div>
+
+                  <p className="text-base font-medium mb-1">{p.name}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{p.desc}</p>
+
+                  {p.role.length > 0 && (
+                    <>
+                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
+                        My role
+                      </p>
+                      <ul className="mb-4 space-y-1">
+                        {p.role.map((r) => (
+                          <li key={r} className="text-xs text-muted-foreground pl-3 relative before:content-['—'] before:absolute before:left-0 before:text-muted-foreground/50">
+                            {r}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+
+                  <hr className="border-border my-3" />
+
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {p.stack.map((t) => (
+                      <span key={t} className="text-xs px-2.5 py-1 rounded-full bg-muted text-muted-foreground border border-border">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                    {p.link && (
+                    <div className="flex justify-start">
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md bg-muted border border-border hover:opacity-80 transition"
+                      >
+                        <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                        Live site
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
-            <div className={`p-6 border rounded-lg shadow hover:shadow-lg transition ${themeStyles.navBg}`}>
-              <h3 className="text-xl font-bold mb-4">Logemanns</h3>
-              <p className={`mb-4 text-700 ${themeStyles.navText}`}>Redesigned and upgraded an interactive learning platform used for swallowing disorder assessment and training. Migrated the backend from CodeIgniter 2 to CodeIgniter 4, introducing a modern API-driven structure for improved data handling.
-              </p>
-              <h4 className="font-semibold mb-2">My Role</h4>
-              <ul className={`list-disc ml-6 mb-4 text-600 text-sm ${themeStyles.text}`}>
-                <li>Migrated the backend from CodeIgniter 2 to CodeIgniter 4, ensuring improved performance, security, and modernframework compatibility.</li>
-                <li>Implemented JWT authentication for secure user access and session management, enhancing security over thelegacy system.</li>
-                <li>Optimized database interactions by restructuring queries, reducing response time and improving performance</li>
-              </ul>
-              <h4 className="font-semibold mb-2">Tech Stack</h4>
-              <p className="mb-4 text-sm">PHP, CodeIgniter 4, PostgreSQL, Git </p>
-              <a className={`${themeStyles.bodyBg} ${themeStyles.text} px-4 py-2 rounded-lg hover:text-white hover:bg-gray-800 transition text-sm`}>More Details</a>
-            </div>
-            <div className={`p-6 border rounded-lg shadow hover:shadow-lg transition ${themeStyles.navBg}`}>
-              <h3 className="text-xl font-bold mb-4">Vehicle Rental Management System (Personal Project)</h3>
-              <p className={`mb-4 text-700 ${themeStyles.text}`}>Vehicle Rental Management System has been developed to modernize the traditional approach to renting vehicles. In conventional systems, both renters and customers rely heavily on manual communication and offline processes. 
-              </p>
-              <h4 className="font-semibold mb-2">Tech Stack</h4>
-              <p className="mb-4 text-sm">React, Tailwind CSS, CodeIgniter 4, MySQL</p>
-              <a className={`${themeStyles.bodyBg} ${themeStyles.navText} px-4 py-2 rounded-lg hover:text-white hover:bg-gray-800 transition text-sm`}>More Details</a>
-            </div>
-          </div>
-          <div className="mt-12 text-center">
-            <a href="#projects" className={`bg-800 ${themeStyles.navBg} ${themeStyles.navText} px-6 py-3 rounded-lg hover:text-white hover:bg-gray-800 transition`}>View More →
-            </a>
+            {/* <div className="mt-10 text-center">
+              <button
+                onClick={() => setShowMore(!showMore)}
+                className="text-sm font-medium px-6 py-2.5 rounded-lg border border-border hover:bg-muted transition"
+              >
+                {showMore ? "Show less" : "View more projects"}
+              </button>
+            </div> */}
           </div>
         </section>
         <section id="contact" className={`py-20 ${themeStyles.navBg} flex flex-col items-center px-6`}>
